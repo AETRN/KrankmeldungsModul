@@ -32,6 +32,11 @@ namespace KrankmeldungsModul.Core.ContainerClasses
             MEDCERT = medcert;
             INFORMEDMAIL = informedmail ?? new List<string>();
         }
+        /// <summary>
+        /// Erstellt aus den ersten 3 Zeichen des Vor-, Nachnamen und der
+        /// aktuellen Zeit einen Hash mit dem SHA256-Algorithmus
+        /// </summary>
+        /// <returns>32 Zeichen langer generierter Hash als String</returns>
         private string _CreateNewID()
         {
             byte[] data = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(STUDENT.FIRSTNAME.Substring(0,3) + STUDENT.SURNAME.Substring(0,3) + DateTime.Now.Ticks.ToString()));

@@ -21,5 +21,9 @@ namespace KrankmeldungsModul.Pages
         {
 
         }
+        public void BTN_Click()
+        {
+             
+        }
     }
 }
