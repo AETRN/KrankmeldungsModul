@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace KrankmeldungsModul.Core.ContainerClasses
@@ -23,15 +25,19 @@ namespace KrankmeldungsModul.Core.ContainerClasses
 
         public Krankmeldung(string id = null, string optmsg = null, Teacher teacher = null, Student student = null, bool medcert = false, List<string> informedmail = null)
         {
-            ID = id ?? CreateNewID();
+            STUDENT = student ?? new Student();
+            ID = id ?? _CreateNewID();
             OPTMSG = optmsg ?? string.Empty;
             TEACHER = teacher ?? new Teacher();
-            STUDENT = student ?? new Student();
             MEDCERT = medcert;
             INFORMEDMAIL = informedmail ?? new List<string>();
         }
-        //
-        //CreateNewID()
-        //
+        private string _CreateNewID()
+        {
+            byte[] data = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(STUDENT.FIRSTNAME.Substring(0,3) + STUDENT.SURNAME.Substring(0,3) + DateTime.Now.Ticks.ToString()));
+            var sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++) { sBuilder.Append(data[i].ToString("x2")); }
+            return sBuilder.ToString().Substring(0,32);
+        }
     }
 }
