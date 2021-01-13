@@ -7,7 +7,7 @@ namespace KrankmeldungsModul.Core.ContainerClasses
 {
     public class Teacher : Person
     {
-        private List<string> _class;
-        public List<string> CLASS { get => _class; set => _class = value; }
+        private string _id;
+        public string ID { get => _id; set => _id = value; }
     }
 }

@@ -15,6 +15,7 @@ namespace KrankmeldungsModul
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+            Krankmeldung test = new Krankmeldung();
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

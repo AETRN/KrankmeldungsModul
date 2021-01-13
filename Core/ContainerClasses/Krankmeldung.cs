@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KrankmeldungsModul.Core.ContainerClasses
 {
-    public class Krankmeldung
+    public class Krankmeldung 
     {
         private string _id,
                         _optmsg;
